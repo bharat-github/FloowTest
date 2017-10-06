@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
     }
     
     /**
-     * @return
+     * @return helper function for invalid login
      */
     public LoginPage invalidLogin() {
     	waitForVisibilityOf(emailId);
@@ -42,7 +42,7 @@ public class LoginPage extends BasePage {
     }
     
     /**
-     * @return
+     * @return test scenario when user is not registers and tries to login
      */
     public LoginPage notRegisteredLogin(){
     	//fail test if text doesnt match
@@ -61,7 +61,7 @@ public class LoginPage extends BasePage {
     }
     
     /**
-     * 
+     * click on create new account
      */
     public void createAccount(){
     	waitForVisibilityOf(createAccount);
