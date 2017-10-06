@@ -23,13 +23,13 @@ This java project has been created using Eclipse Community Edition. POM File man
 
   **Clone this repository**
  
-  **Open the solution**
+  **Open the project in IDE**
  
   **Change the application location destination in AndroidSetup.java and the device name you want to run on.**
  
   **Rebuild**
  
-  **Run the test using testNG run configuration**
+  **Run the AppiumTest test using testNG run configuration**
 
 
 
