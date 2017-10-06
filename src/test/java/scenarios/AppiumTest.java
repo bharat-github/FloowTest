@@ -42,6 +42,7 @@ public class AppiumTest extends AndroidSetup {
 
 	/**
 	 * @throws InterruptedException
+	 * TestEP2
 	 */
 	@Test(dependsOnMethods = { "acceptTest" })
 	void notRegisteredtest() throws InterruptedException {
@@ -50,6 +51,10 @@ public class AppiumTest extends AndroidSetup {
 		login.notRegisteredLogin();
 	}
 	
+	/**
+	 * @throws InterruptedException
+	 * TestEP1
+	 */
 	@Test(dependsOnMethods = { "acceptTest", "notRegisteredtest" })
 	public void registeredLogin() throws InterruptedException{
 		login.validLogin();
@@ -57,6 +62,7 @@ public class AppiumTest extends AndroidSetup {
 	
 	/**
 	 * @throws InterruptedException
+	 * TestAcc1
 	 */
 	@Test(dependsOnMethods = { "acceptTest","registeredLogin" })
 	void registerNew() throws InterruptedException {
