@@ -21,15 +21,15 @@ This java project has been created using Eclipse Community Edition. POM File man
 
 - **Android SDK Set up** - Download Android SDK, set up the path appropriately. Launch Appium and start the device.
 
- 1. Clone this repository
+  1. Clone this repository
  
- 2. Open the solution
+  2. Open the solution
  
- 3.Change the application location destination in AndroidSetup.java and the device name you want to run on.
+  3.Change the application location destination in AndroidSetup.java and the device name you want to run on.
  
- 4.Rebuild
+  4.Rebuild
  
- 5. Run the test using testNG run configuration
+  5. Run the test using testNG run configuration
 
 
 
