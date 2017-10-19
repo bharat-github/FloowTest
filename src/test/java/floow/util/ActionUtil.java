@@ -1,29 +1,22 @@
-package pages;
+package floow.util;
+
+import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
+import floow.scenarios.NegativeTests;
 
-/**
- * @author bharat anand. 
- * 		   Basic class that provides actions utilised on various
- *         pages of the test app
- */
-public class BasePage {
-
+public class ActionUtil {
 	protected WebDriver driver;
-
-	/**
-	 * @param driver
-	 */
-	public BasePage(WebDriver driver) {
-		this.driver = driver;
+	private static final Logger logger = LoggerFactory.getLogger(NegativeTests.class);
+	protected ActionUtil(WebDriver driver){
+		this.driver=driver;
 	}
 
 	/**

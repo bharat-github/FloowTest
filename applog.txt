@@ -1,0 +1,3 @@
+INFO    2017-10-19 09:05:02,830 [TestNGInvoker-registeredLogin()] floow.util.User  - starting a valid login process
+INFO    2017-10-19 09:17:41,396 [TestNGInvoker-registeredLogin()] floow.util.User  - starting a valid login process after new registeration
+INFO    2017-10-19 09:17:46,137 [TestNGInvoker-registeredLogin()] floow.util.User  - close button clicked
