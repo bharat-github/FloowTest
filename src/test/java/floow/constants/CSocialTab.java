@@ -18,4 +18,6 @@ public class CSocialTab {
 	public static final String addFriendContactClass="android.view.ViewGroup";
 	public static final String addFriendContactNext="btn_send_request";
 	public static final String editProfileBtn="btn_edit_my_profile";
+	public static final String updateName="my_profile_name_edit";
+	public static final String saveProfile="btn_save_my_profile";
 }

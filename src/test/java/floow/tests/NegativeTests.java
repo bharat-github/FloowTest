@@ -1,11 +1,10 @@
-package floow.scenarios;
+package floow.tests;
 
 import java.io.File;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
@@ -18,14 +17,14 @@ import floow.util.User;
 public class NegativeTests {
 	User user;
 	WebDriver driver;
-	private static final Logger logger = LoggerFactory.getLogger(NegativeTests.class);
+	private static final Logger logger = Logger.getLogger(NegativeTests.class);
 	
 
 	/**
 	 * @throws Exception
 	 */
 	@BeforeTest
-	public void setUp() throws Exception, InterruptedException {
+	public void init() throws Exception, InterruptedException {
 		user = new User();
 		user.agree();
 		driver = user.getDriver();
@@ -38,7 +37,7 @@ public class NegativeTests {
 	 * @throws Exception
 	 */
 	@AfterClass
-	public void tearDown() throws Exception {
+	public void cleanUp() throws Exception {
 		driver.quit();
 	}
 

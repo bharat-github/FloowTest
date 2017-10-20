@@ -2,31 +2,38 @@ package floow.util;
 
 import java.net.MalformedURLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 
+import floow.constants.CHomeTab;
 import floow.constants.CLogin;
-import floow.pages.AcceptPage;
-import floow.scenarios.AndroidSetup;
 import io.appium.java_client.android.AndroidDeviceActionShortcuts;
+import io.appium.java_client.android.AndroidKeyCode;
 
-public class User extends AndroidSetup implements ILogin {
+public class User extends AndroidSetup implements ILogin, ISelect, IJourney, IScore, ISocial {
 	private Accounts account;
-	private static final Logger logger=Logger.getLogger(User.class);
+	private static final Logger logger = Logger.getLogger(User.class);
+	private final int messageLength = 100;
+	private final int indexOfGmail = 2;
+	private final int enterKey = 66;
 
 	public User() {
 		super();
-		try {
-			super.prepareAndroidForAppium();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		account = new Accounts(driver, PasswordTest.NONE);
+		super.driverInit();
+		account = new Accounts(driver, PasswordTestType.NONE);
+	}
+
+	public User(String username, String password) {
+		super();
+		super.driverInit();
+		account = new Accounts(driver, username, password);
 	}
 
 	public void invalidLogin() {
@@ -46,16 +53,16 @@ public class User extends AndroidSetup implements ILogin {
 	 */
 	public String notRegisteredLogin() {
 		// fail test if text doesnt match
-		String message="matching message received on alert";
+		String message = "matching message received on alert";
 		logger.info(message);
 		Assert.assertEquals(driver.findElement(messageText).getText(), CLogin.messageNotRegistered, CLogin.alertError);
-		String result=driver.findElement(messageText).getText();
+		String result = driver.findElement(messageText).getText();
 		driver.findElement(button).click();
 		logger.info("verified message");
 		return result;
 	}
 
-	public void validLogin() {
+	public boolean validLogin() {
 		logger.info("starting a valid login process");
 		account.waitForVisibilityOf(emailId);
 		driver.findElement(emailId).clear();
@@ -63,7 +70,10 @@ public class User extends AndroidSetup implements ILogin {
 		driver.findElement(password).sendKeys(account.getPassword());
 		driver.findElement(login_Button).click();
 		logger.info("login button clicked");
+		driver.findElement(closeButton).click();
+		return true;
 	}
+
 	public void validLoginAfterRegistering() {
 		logger.info("starting a valid login process after new registeration");
 		account.waitForVisibilityOf(loginAfterRegister);
@@ -81,38 +91,194 @@ public class User extends AndroidSetup implements ILogin {
 		driver.findElement(createAccount).click();
 	}
 
-	public void registerNewAccount(){
+	public void registerNewAccount() {
+		logger.info("registering a new user with");
+		// wait for view to load
 		account.waitForVisibilityOf(firstName);
+		// finds element by id and sends text
 		driver.findElement(firstName).sendKeys(account.getFirstName());
-		((AndroidDeviceActionShortcuts) driver).pressKeyCode(66);
+		logger.info("FirstName" + account.getFirstName());
+		// typecasting driver to send enter key on native android
+		((AndroidDeviceActionShortcuts) driver).pressKeyCode(enterKey);
 		driver.findElement(surname).sendKeys(account.getSecondName());
+		logger.info("SecondName" + account.getSecondName());
 		driver.findElement(dateofbirth).click();
 		/*
 		 * trying to go as far as 20
 		 */
-		for(int iterator=0;iterator<20;iterator++){
+		for (int iterator = 0; iterator < 20; iterator++) {
 			driver.findElement(prev).click();
 		}
 		driver.findElement(okButton).click();
-		((AndroidDeviceActionShortcuts) driver).pressKeyCode(66);
+		((AndroidDeviceActionShortcuts) driver).pressKeyCode(enterKey);
 		driver.findElement(email).sendKeys(account.getUsername());
 		driver.findElement(postcode).sendKeys(account.getPostcode());
-		((AndroidDeviceActionShortcuts) driver).pressKeyCode(66);
+		((AndroidDeviceActionShortcuts) driver).pressKeyCode(enterKey);
 		driver.findElement(companyName).sendKeys(account.getCompanyName());
-		((AndroidDeviceActionShortcuts) driver).pressKeyCode(66);
+		((AndroidDeviceActionShortcuts) driver).pressKeyCode(enterKey);
 		driver.findElement(password).sendKeys(account.getPassword());
-		((AndroidDeviceActionShortcuts) driver).pressKeyCode(66);
+		((AndroidDeviceActionShortcuts) driver).pressKeyCode(enterKey);
 		driver.findElement(comfirmPassword).sendKeys(account.getPassword());
-		((AndroidDeviceActionShortcuts) driver).pressKeyCode(66);
+		((AndroidDeviceActionShortcuts) driver).pressKeyCode(enterKey);
 		driver.findElement(submitButton).click();
-		
+
 	}
-	public boolean agree(){
+
+	public boolean agree() {
+		logger.info("clicking on agree terms and conditions");
 		account.waitForVisibilityOf(userId);
 		driver.findElement(userId).click();
 		return false;
-		
+
 	}
+
+	public boolean startJourney() {
+		logger.info("starting journey");
+		account.waitForVisibilityOf(startButton);
+		driver.findElement(startButton).click();
+		return account.waitForVisibilityOf(stopButton);
+	}
+
+	public boolean stopJourney() {
+		logger.info("stopping journey");
+		account.waitForVisibilityOf(stopButton);
+		driver.findElement(stopButton).click();
+		account.waitForVisibilityOf(okButton);
+		driver.findElement(okButton).click();
+		return account.waitForVisibilityOf(startButton);
+
+	}
+
+	public boolean sendfeedback() {
+		logger.info("start of feedback messaging");
+		account.waitForVisibilityOf(feedbackBtn);
+		driver.findElement(feedbackBtn).click();
+		account.waitForVisibilityOf(dropDownList);
+		driver.findElement(dropDownList).click();
+		List<WebElement> choices = driver.findElements(selectType);
+		WebElement Scoring = choices.get(indexOfGmail);
+		Scoring.click();
+		account.waitForClickabilityOf(editBox);
+		driver.findElement(editBox).sendKeys(generateRandomMessage());
+		account.waitForClickabilityOf(sendBtn);
+		driver.findElement(sendBtn).click();
+		WebElement Options = driver.findElement(sendOptions);
+		List<WebElement> list = Options.findElements(typeOptions);
+		WebElement gmailButtton = list.get(indexOfGmail);
+		gmailButtton.click();
+		// need to change context to native here.
+		// account.waitForVisibilityOf(sendEmail);
+		try {
+			driver.findElement(sendEmail).click();
+		} catch (Exception e) {
+			// need to figure out a way to change context
+		}
+		return true;
+	}
+
+	public boolean declareEmergency() {
+		logger.info("start of declare emergency block");
+		// press back three times to reach the home view
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		// wait for emergency button
+		account.waitForVisibilityOf(emergency);
+		driver.findElement(emergency).click();
+		account.waitForVisibilityOf(breakDown);
+		// click on breakdown
+		driver.findElement(breakDown).click();
+		account.waitForVisibilityOf(callNow);
+		driver.findElement(callNow).click();
+		return true;
+	}
+
+	public boolean modifyJourney(int journeyNumber) {
+		logger.info("Start of journey modification ");
+		reachAndSelectJourney(journeyNumber);
+		modifyModeOfTransport();
+		return true;
+	}
+
+	private void reachAndSelectJourney(int journeyNumber) {
+		logger.info("selecting journey number " + journeyNumber + "from the top");
+		account.waitForVisibilityOf(journeyTabBtn);
+		driver.findElement(journeyTabBtn).click();
+		account.waitForVisibilityOf(rowElement);
+		List<WebElement> journeys = driver.findElements(rowElement);
+		logger.info(journeys.size());
+		// getting the second journey
+		WebElement journeyOne = journeys.get(journeyNumber);
+		journeyOne.click();
+	}
+
+	private void modifyModeOfTransport() {
+		logger.info("updating mode of transport for a given journey");
+		account.waitForVisibilityOf(modifyJourneyBtn);
+		driver.findElement(modifyJourneyBtn).click();
+		account.waitForVisibilityOf(car);
+		driver.findElement(train).click();
+		account.waitForVisibilityOf(alertOK);
+		driver.findElement(alertOK).click();
+		account.waitForVisibilityOf(save);
+		driver.findElement(save);
+	}
+
+	public boolean changeMapView(int journeyNumber) {
+		logger.info("changing map view to satellite");
+		reachAndSelectJourney(journeyNumber);
+		account.waitForVisibilityOf(showMapBtn);
+		driver.findElement(showMapBtn).click();
+		account.waitForVisibilityOf(satelliteView);
+		driver.findElement(satelliteView).click();
+		return true;
+	}
+
+	public boolean changeScoreToMonthly() {
+		logger.info("changing score details to monthly");
+		account.waitForVisibilityOf(scoreTabBtn);
+		driver.findElement(scoreTabBtn).click();
+		account.waitForVisibilityOf(monthlyBtn);
+		driver.findElement(monthlyBtn).click();
+		return true;
+	}
+
+	public boolean openScoreDetails() {
+		logger.info("opening score details");
+		account.waitForVisibilityOf(scoreTabBtn);
+		driver.findElement(scoreTabBtn).click();
+		account.waitForVisibilityOf(scoreDetailBtn);
+		driver.findElement(scoreDetailBtn).click();
+		return true;
+	}
+
+	public boolean addFriendByEmail(String email) {
+		logger.info("adding friend with email : " + email);
+		account.waitForVisibilityAndClick(socialTab);
+		account.waitForVisibilityAndClick(friendsBtn);
+		account.waitForVisibilityAndClick(addFriendBtn);
+		account.waitForVisibilityAndClick(addFriendWithEmail);
+		account.waitForVisibilityAndClick(emailTextBox);
+		driver.findElement(emailTextBox).sendKeys(email);
+		((AndroidDeviceActionShortcuts) driver).pressKeyCode(enterKey);
+		account.waitForVisibilityAndClick(nextBtn);
+		account.waitForVisibilityAndClick(finishBtn);
+		return true;
+	}
+
+	public boolean editProfileName(String newName) {
+		logger.info("updating profile name with new name : " + newName);
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		account.waitForVisibilityAndClick(profileBtn);
+		account.waitForVisibilityAndClick(editProfileBtn);
+		account.waitForVisibilityAndClick(updateNameBox);
+		WebElement name = driver.findElement(updateNameBox);
+		name.clear();
+		name.sendKeys(newName);
+		account.waitForVisibilityAndClick(saveName);
+		return true;
+	}
+
 	/* unit test to check the functionality of the user utility class */
 	public static void main(String[] argv) {
 		User usr = new User();
@@ -141,4 +307,10 @@ public class User extends AndroidSetup implements ILogin {
 	public WebDriver getDriver() {
 		return super.driver;
 	}
+
+	private String generateRandomMessage() {
+		Random rdm = new Random();
+		return RandomStringUtils.randomAlphabetic(messageLength);
+	}
+
 }

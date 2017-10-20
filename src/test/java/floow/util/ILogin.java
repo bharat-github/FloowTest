@@ -14,29 +14,31 @@ public interface ILogin {
 	By messageText = By.id(CLogin.messageText);
 	By button = By.id(CLogin.button);
 	By createAccount = By.id(CLogin.createAccount);
-	
-	By firstName=By.id(CLogin.firstName);
-	By surname=By.id(CLogin.surname);
-	By dateofbirth=By.id(CLogin.dateOfBirth);
-	By email=By.id(CLogin.emailId);
-	By postcode=By.id(CLogin.postcode);
-	By companyName=By.id(CLogin.companyName);
-	By comfirmPassword=By.id(CLogin.confirmPassword);
-	By prev=By.id(CLogin.prev);
-	By okButton=By.id(CLogin.okButton);
-	By submitButton=By.id(CLogin.submitButton);
-	
-	By userId = By.id(CHomeTab.agreeBtn );
-	By loginAfterRegister=By.id(CLogin.loginAfterResgister);
-	By closeButton=By.id(CLogin.close);
 
+	By firstName = By.id(CLogin.firstName);
+	By surname = By.id(CLogin.surname);
+	By dateofbirth = By.id(CLogin.dateOfBirth);
+	By email = By.id(CLogin.emailId);
+	By postcode = By.id(CLogin.postcode);
+	By companyName = By.id(CLogin.companyName);
+	By comfirmPassword = By.id(CLogin.confirmPassword);
+	By prev = By.id(CLogin.prev);
+	By okButton = By.id(CLogin.okButton);
+	By submitButton = By.id(CLogin.submitButton);
+
+	By userId = By.id(CHomeTab.agreeBtn);
+	By loginAfterRegister = By.id(CLogin.loginAfterResgister);
+	By closeButton = By.id(CLogin.close);
+	By startButton = By.id(CHomeTab.startButton);
+	By stopButton = By.id(CHomeTab.stopButton);
 	public void invalidLogin();
 
 	public String notRegisteredLogin();
 
-	public void validLogin();
+	public boolean validLogin();
 
 	public void createAccount();
-	
+
 	public void registerNewAccount();
+	
 }

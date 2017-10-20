@@ -1,4 +1,4 @@
-package floow.scenarios;
+package floow.tests;
 
 import java.io.File;
 
@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import org.testng.log4testng.Logger;
 
 import floow.constants.CLogin;
-import floow.pages.AcceptPage;
 import floow.util.User;
 
 /**
@@ -26,7 +25,7 @@ public class NewRegistrationTests {
 	 * @throws Exception
 	 */
 	@BeforeTest
-	public void setUp() throws Exception {
+	public void init() throws Exception {
 		user = new User();
 		driver = user.getDriver();
 		user.agree();
@@ -38,7 +37,7 @@ public class NewRegistrationTests {
 	 * @throws Exception
 	 */
 	@AfterClass
-	public void tearDown() throws Exception {
+	public void cleanUp() throws Exception {
 		driver.quit();
 	}
 

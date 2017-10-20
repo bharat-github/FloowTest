@@ -1,7 +1,5 @@
 package floow.util;
 
-public enum PasswordTest {
+public enum PasswordTestType {
 	   MINLENGTH,MAXLENGTH,NOALPHABET,ALPHABET,SPECIALCHARACTER,NONE
-	
-	
 }
