@@ -21,7 +21,11 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDeviceActionShortcuts;
 import io.appium.java_client.android.AndroidKeyCode;
-
+/**
+ * contains all functions for different tabs in the app
+ * implements the various interfaces corresponding to the tabs
+ *
+ */
 public class User extends AndroidSetup implements ILogin, ISelect, IJourney, IScore, ISocial, IHelp {
 	private Accounts account;
 	private static final Logger logger = Logger.getLogger(User.class);

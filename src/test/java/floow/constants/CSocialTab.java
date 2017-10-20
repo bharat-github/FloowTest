@@ -1,5 +1,9 @@
 package floow.constants;
-
+/**
+ * contains all constants like ids and class labels present in social view and related tabs
+ * 
+ *
+ */
 public class CSocialTab {
 	public static final String scoreBtn="social_menu_my_scores";
 	public static final String friendsBtn="social_menu_friends";

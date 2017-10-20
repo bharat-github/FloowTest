@@ -9,7 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import floow.constants.CLogin;
-
+/**
+ * contains utility functions and details about an account in the app
+ * 
+ *
+ */
 public class Accounts extends ActionUtil implements IAccounts {
 
 	private String accountUserID;

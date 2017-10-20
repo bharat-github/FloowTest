@@ -1,5 +1,8 @@
 package floow.constants;
-
+/**
+ * contains all constants like ids and class labels present in score tab
+ *
+ */
 public class CScoreTab {
 	public static final String scoreId="text_view_score";
 	public static final String componentScoreBtnId="btn_component_score";
