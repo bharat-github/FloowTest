@@ -156,3 +156,49 @@ ERROR   2017-10-20 07:24:38,867 [TestNGInvoker-changeProfileName()] floow.tests.
 INFO    2017-10-20 07:27:10,697 [main] floow.util.User  - starting a valid login process
 INFO    2017-10-20 07:27:30,853 [main] floow.util.User  - login button clicked
 INFO    2017-10-20 07:27:32,790 [TestNGInvoker-addFriendByEmail()] floow.util.Accounts  - creating account user with email FloowUser988@gmail.com
+INFO    2017-10-20 07:58:28,358 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 07:58:49,145 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 08:00:38,135 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:00:58,060 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 08:01:45,076 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:02:04,623 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 08:03:12,029 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:03:31,356 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 08:35:46,712 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:36:07,170 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 08:42:10,828 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:42:31,042 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 08:47:22,469 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:47:43,453 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 08:50:22,192 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 08:50:23,799 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:50:43,594 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 08:51:42,042 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 08:51:43,652 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:52:04,329 [main] floow.util.User  - login button clicked
+ERROR   2017-10-20 08:52:39,794 [TestNGInvoker-pauseApp()] floow.util.ActionUtil  - exception
+INFO    2017-10-20 08:53:23,185 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 08:53:24,965 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 08:53:45,118 [main] floow.util.User  - login button clicked
+ERROR   2017-10-20 08:55:14,935 [TestNGInvoker-pauseApp()] floow.util.ActionUtil  - exception
+INFO    2017-10-20 08:56:21,761 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 08:56:25,990 [main] floow.util.User  - starting a valid login process
+ERROR   2017-10-20 08:56:56,070 [main] floow.util.ActionUtil  - exception
+INFO    2017-10-20 09:01:03,860 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 09:01:05,476 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 09:01:24,070 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 09:02:38,338 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 09:02:40,257 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 09:03:00,303 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 09:05:25,989 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 09:05:28,163 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 09:05:48,151 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 09:07:38,235 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 09:07:39,907 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 09:08:00,438 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 09:11:30,701 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 09:11:32,430 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 09:11:53,875 [main] floow.util.User  - login button clicked
+INFO    2017-10-20 09:13:03,012 [main] floow.util.User  - clicking on agree terms and conditions
+INFO    2017-10-20 09:13:04,685 [main] floow.util.User  - starting a valid login process
+INFO    2017-10-20 09:13:25,574 [main] floow.util.User  - login button clicked

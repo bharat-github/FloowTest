@@ -28,8 +28,7 @@ public class JourneyTest {
 		user = new User(OldUserDetails.getUsername(), OldUserDetails.getPassword());
 		driver = user.getDriver();
 		user.agree();
-		String log4jConfigFile = System.getProperty("user.dir") + File.separator + "log4j.properties";
-		PropertyConfigurator.configure(log4jConfigFile);
+		logFileSetup();
 
 	}
 
@@ -65,5 +64,9 @@ public class JourneyTest {
 	public void changeMapView(){
 		//hardcode to pick up the second from top
 		Assert.assertTrue(user.changeMapView(2));
+	}
+	private void logFileSetup(){
+		String log4jConfigFile = System.getProperty("user.dir") + File.separator + "log4j.properties";
+		PropertyConfigurator.configure(log4jConfigFile);
 	}
 }

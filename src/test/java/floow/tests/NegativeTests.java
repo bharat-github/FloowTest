@@ -28,9 +28,7 @@ public class NegativeTests {
 		user = new User();
 		user.agree();
 		driver = user.getDriver();
-		String log4jConfigFile = System.getProperty("user.dir")
-	              + File.separator + "log4j.properties";
-	    PropertyConfigurator.configure(log4jConfigFile);
+		logFileSetup();
 	}
 
 	/**
@@ -43,7 +41,6 @@ public class NegativeTests {
 
 	/**
 	 * @throws InterruptedException
-	 *             TestEP2
 	 */
 	@Test(enabled = true, timeOut = 100000)
 	void notRegisteredtest() throws InterruptedException {
@@ -51,5 +48,9 @@ public class NegativeTests {
 		user.invalidLogin();
 		Assert.assertEquals(user.notRegisteredLogin(), CLogin.messageNotRegistered, CLogin.alertError);
 		logger.info("finished");
+	}
+	private void logFileSetup(){
+		String log4jConfigFile = System.getProperty("user.dir") + File.separator + "log4j.properties";
+		PropertyConfigurator.configure(log4jConfigFile);
 	}
 }

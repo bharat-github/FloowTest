@@ -13,21 +13,21 @@ import org.testng.annotations.Test;
 import floow.util.OldUserDetails;
 import floow.util.User;
 
-public class ScoreTest {
+public class HelpTest {
 	User user;
 	WebDriver driver;
-	private static final Logger logger = Logger.getLogger(ScoreTest.class);
+	private static final Logger logger = Logger.getLogger(HelpTest.class);
 
 	/**
 	 * @throws Exception
 	 */
 	@BeforeClass
-	private void init() throws Exception {
+	public void init() throws Exception {
 
 		user = new User(OldUserDetails.getUsername(), OldUserDetails.getPassword());
 		driver = user.getDriver();
-		user.agree();
 		logFileSetup();
+		user.agree();
 		user.validLogin();
 
 	}
@@ -37,17 +37,14 @@ public class ScoreTest {
 	 */
 	@AfterClass
 	public void cleanUp() throws Exception {
-		// driver.quit();
+		driver.quit();
 	}
 
 	@Test(enabled = true, timeOut = 100000)
-	public void changeScoreToMonthly() {
-		Assert.assertTrue(user.changeScoreToMonthly());
+	public void pauseApp() {
+		Assert.assertTrue(user.pauseApp());
 	}
-	@Test(enabled = true, timeOut = 100000)
-	private void openScoreDetails() {
-		Assert.assertTrue(user.openScoreDetails());
-	}
+	
 	private void logFileSetup(){
 		String log4jConfigFile = System.getProperty("user.dir") + File.separator + "log4j.properties";
 		PropertyConfigurator.configure(log4jConfigFile);

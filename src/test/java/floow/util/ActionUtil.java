@@ -15,7 +15,7 @@ import floow.tests.NegativeTests;
 
 public class ActionUtil {
 	protected WebDriver driver;
-	private static final Logger logger = LoggerFactory.getLogger(NegativeTests.class);
+	private static final Logger logger = LoggerFactory.getLogger(ActionUtil.class);
 	protected ActionUtil(WebDriver driver){
 		this.driver=driver;
 	}

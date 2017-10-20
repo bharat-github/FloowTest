@@ -1,5 +1,6 @@
 package floow.util;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.List;
@@ -7,17 +8,21 @@ import java.util.Random;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 
 import floow.constants.CHomeTab;
 import floow.constants.CLogin;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDeviceActionShortcuts;
 import io.appium.java_client.android.AndroidKeyCode;
 
-public class User extends AndroidSetup implements ILogin, ISelect, IJourney, IScore, ISocial {
+public class User extends AndroidSetup implements ILogin, ISelect, IJourney, IScore, ISocial, IHelp {
 	private Accounts account;
 	private static final Logger logger = Logger.getLogger(User.class);
 	private final int messageLength = 100;
@@ -49,7 +54,7 @@ public class User extends AndroidSetup implements ILogin, ISelect, IJourney, ISc
 	}
 
 	/**
-	 * @return test scenario when user is not registerd and tries to login
+	 * @return test scenario when user is not registered and tries to login
 	 */
 	public String notRegisteredLogin() {
 		// fail test if text doesnt match
@@ -70,7 +75,7 @@ public class User extends AndroidSetup implements ILogin, ISelect, IJourney, ISc
 		driver.findElement(password).sendKeys(account.getPassword());
 		driver.findElement(login_Button).click();
 		logger.info("login button clicked");
-		driver.findElement(closeButton).click();
+		account.waitForVisibilityAndClick(closeButton);
 		return true;
 	}
 
@@ -276,6 +281,26 @@ public class User extends AndroidSetup implements ILogin, ISelect, IJourney, ISc
 		name.clear();
 		name.sendKeys(newName);
 		account.waitForVisibilityAndClick(saveName);
+		return true;
+	}
+
+	public boolean pauseApp() {
+		account.waitForVisibilityAndClick(helpTab);
+		List<WebElement> list = driver.findElements(preferencesButton);
+		WebElement preferences = list.get(1);
+		preferences.click();
+		try {
+			Dimension screenDim = driver.manage().window().getSize();
+			int startPoint = (int) (screenDim.getHeight() * 0.5);
+			int scrollPoint = (int) (screenDim.getHeight() * 0.2);
+			driver.swipe(0, startPoint, 0, scrollPoint, 1000);
+		} catch (Exception e) {
+			//Assert.fail("test ran into problem while scrolling");
+		}
+		account.waitForVisibilityOf(pauseSlider);
+		WebElement slider = driver.findElement(pauseSlider);
+		driver.tap(1, slider, 10);
+		account.waitForVisibilityAndClick(pauseBtn);
 		return true;
 	}
 

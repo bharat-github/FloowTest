@@ -32,10 +32,7 @@ public class OldUserTests {
 		user = new User(OldUserDetails.getUsername(), OldUserDetails.getPassword());
 		driver = user.getDriver();
 		user.agree();
-		String log4jConfigFile = System.getProperty("user.dir") + File.separator + "log4j.properties";
-		PropertyConfigurator.configure(log4jConfigFile);
-		
-
+		logFileSetup();
 	}
 
 	/**
@@ -68,6 +65,10 @@ public class OldUserTests {
 	@Test(enabled = true,dependsOnMethods={"startJourney","stopJourney","sendFeedback"}, timeOut = 100000)
 	public void declareEmergency() throws InterruptedException {
 		Assert.assertTrue(user.declareEmergency());
+	}
+	private void logFileSetup(){
+		String log4jConfigFile = System.getProperty("user.dir") + File.separator + "log4j.properties";
+		PropertyConfigurator.configure(log4jConfigFile);
 	}
 	
 	

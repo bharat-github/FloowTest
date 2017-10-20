@@ -19,4 +19,6 @@ public class CHelpTab {
 	public static final String faqQuestion="question";
 	public static final String exampleQuestionText="What is the Time-On-Task Score?";
 	public static final String exampleQuestionID="question";
+	public static final String pauseSlider="pause_slider";
+	public static final String pauseBtn="btn_pause";
 }

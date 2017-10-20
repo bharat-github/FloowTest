@@ -28,8 +28,7 @@ public class SocialTest {
 		user = new User(OldUserDetails.getUsername(), OldUserDetails.getPassword());
 		driver = user.getDriver();
 		user.agree();
-		String log4jConfigFile = System.getProperty("user.dir") + File.separator + "log4j.properties";
-		PropertyConfigurator.configure(log4jConfigFile);
+		logFileSetup();
 		user.validLogin();
 
 	}
@@ -52,5 +51,9 @@ public class SocialTest {
 		Random randomGenerator=new Random();
 		String newName=user.getAccount().createRandomFirstName(randomGenerator);
 		Assert.assertTrue(user.editProfileName(newName));
+	}
+	private void logFileSetup(){
+		String log4jConfigFile = System.getProperty("user.dir") + File.separator + "log4j.properties";
+		PropertyConfigurator.configure(log4jConfigFile);
 	}
 }

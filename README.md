@@ -8,27 +8,36 @@
 ---
 To illustrate object oriented development of a test-framework from the grounds up and validating scenarios in given test application. 
 
-##### Class
+##### Key Features
 ---
-This would precisely explain how to get started with Android App testing, write the first test and then the test suite management.
+*All constants are in separate package
+*All tests are contained in tests package
+```
+**HelpTest** - *pauseApp* contains the test to pause app by navigating to preferences in help tab
+**JourneyTest**- *startJourney,stopJourney,modifyJourneyType,changeMapView* contains test related to journey tab
+**NegativeTest** - *notRegisteredtest* contains user trying to gain access without registering
+**NewRegistrationTests** - *registeredLoginAfterResgistering,registerNew* registers a new user and then logins into app
+**OldUserTests** - * startJourney,stopJourney,sendFeedback,declareEmergency* - contains user action tests that a resgistered user can do on the home tab
+**ScoreTest** - *changeScoreToMonthly,openScoreDetails* - tests implemented for score tab
+**SocialTest** - *addFriendByEmail,changeProfileName* - tests implemented for social tab
 
-This java project has been created using Eclipse Community Edition. POM File manages the dependency of Selenium. Project is using TestNG annotation. I have also bundled the respective mobile applications under the apps folder for ease.
+```
 
 ##### Steps:
 ---
- a. *Appium Set up* - Before running the project you need to download and install Appium. Once this this done, do the android SDK set up as mentioned below.
 
- b. *Android SDK Set up* - Download Android SDK, set up the path appropriately. Launch Appium and start the device.
+ a. *Android SDK Set up* - Download Android SDK, set up the path appropriately. 
+ 
+ b. *Appium Set up* - download the latest appium installation from the official website based on the OS. Install and update the environment variables. Launch Appium and start the device. 
 
- c. *Clone this repository*
+ c. *Clone the repository at https://github.com/bharat-github/FloowTest*
  
- d. *Open the project in IDE*
+ d. *Open the project in IDE and resolve any dependency issues*
  
- e. *Change the application location destination in AndroidSetup.java and the device name you want to run on.*
+ e. *Update any constant values like device type (on which the test are to be run in CAppSetup)*
  
- f. *Rebuild*
+ f. *Run the various tests using testNG run configuration*
  
- g. *Run the AppiumTest test using testNG run configuration*
 ##### Logger
 ---
 All java files log Info,Debug, Warn level information to console and logfile called 'applog.txt'. The configuration for logger is defined in log4j.properties.
@@ -37,9 +46,9 @@ All java files log Info,Debug, Warn level information to console and logfile cal
 ---
 All files containing constants start with 'C' followed by the name of the tab/view in the app it is related to.For example, CMapView contains constants related to mapView of a journey.
 
-##### ILogin.java
+##### I*.java
 ---
-This interface includes member variables that are IDs for elements during login process and also declarations for methods including validLogin,registerNewAccount.
+These interface includes member variables that are IDs for elements during various test scenarios and also declarations for methods including validLogin,registerNewAccount.
 
 ##### User.java 
 ---
@@ -60,9 +69,5 @@ This class helps generate random values for 7 parameters listed above. Some of t
 
  
 
- 
- <a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
-" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 
