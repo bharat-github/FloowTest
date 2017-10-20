@@ -13,13 +13,13 @@ To illustrate object oriented development of a test-framework from the grounds u
 *All constants are in separate package
 *All tests are contained in tests package
 ```
-**HelpTest** - *pauseApp* contains the test to pause app by navigating to preferences in help tab
-**JourneyTest**- *startJourney,stopJourney,modifyJourneyType,changeMapView* contains test related to journey tab
-**NegativeTest** - *notRegisteredtest* contains user trying to gain access without registering
-**NewRegistrationTests** - *registeredLoginAfterResgistering,registerNew* registers a new user and then logins into app
-**OldUserTests** - * startJourney,stopJourney,sendFeedback,declareEmergency* - contains user action tests that a resgistered user can do on the home tab
-**ScoreTest** - *changeScoreToMonthly,openScoreDetails* - tests implemented for score tab
-**SocialTest** - *addFriendByEmail,changeProfileName* - tests implemented for social tab
+HelpTest - *pauseApp* contains the test to pause app by navigating to preferences in help tab
+JourneyTest- *startJourney,stopJourney,modifyJourneyType,changeMapView* contains test related to journey tab
+NegativeTest - *notRegisteredtest* contains user trying to gain access without registering
+NewRegistrationTests - *registeredLoginAfterResgistering,registerNew* registers a new user and then logins into app
+OldUserTests - * startJourney,stopJourney,sendFeedback,declareEmergency* - contains user action tests that a resgistered user can do on the home tab
+ScoreTest - *changeScoreToMonthly,openScoreDetails* - tests implemented for score tab
+SocialTest - *addFriendByEmail,changeProfileName* - tests implemented for social tab
 
 ```
 
